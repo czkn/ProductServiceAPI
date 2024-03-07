@@ -1,0 +1,38 @@
+﻿CREATE TABLE Products
+(
+    ID INT PRIMARY KEY,
+    SKU NVARCHAR(255) NOT NULL,
+    Name NVARCHAR(255) NOT NULL,
+    EAN NVARCHAR(50) NOT NULL,
+    ProducerName NVARCHAR(255) NOT NULL,
+    Category NVARCHAR(300) NOT NULL,
+    IsWire BIT NOT NULL,
+    Available BIT NOT NULL,
+    IsVendor BIT NOT NULL,
+    DefaultImage NVARCHAR(400) NOT NULL
+);
+
+GO
+
+CREATE TABLE Inventory
+(
+    ProductID INT PRIMARY KEY,
+    SKU NVARCHAR(255) NOT NULL,
+    Unit NVARCHAR(50) NOT NULL,
+    Qty DECIMAL(18, 2) NOT NULL,
+    Manufacturer NVARCHAR(255) NOT NULL,
+    Shipping NVARCHAR(50) NOT NULL,
+    ShippingCost DECIMAL(18, 2)
+);
+
+GO
+
+CREATE TABLE Prices
+(
+    ID NVARCHAR(50) PRIMARY KEY,
+    SKU NVARCHAR(255) NOT NULL,
+    NettPrice DECIMAL(18, 2) NOT NULL,
+    NettPriceAfterDiscount DECIMAL(18, 2) NOT NULL,
+    VATRate DECIMAL(5, 2),
+    NettPriceAfterDiscountForLogisticUnit DECIMAL(18, 2)
+);
